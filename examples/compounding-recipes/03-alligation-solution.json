@@ -1,0 +1,323 @@
+{
+  "compoundingId": "COMP-00000003",
+  "recipeTitle": "Dextrose 7.5% Solution Using Alligation",
+  "category": "Solution - IV Admixture",
+  "difficulty": "Moderate",
+  "description": "Preparation of a custom concentration dextrose solution by mixing two different stock concentrations using the alligation method",
+  "clinicalUse": "Customized parenteral nutrition or fluid therapy requiring specific dextrose concentration",
+  "prescriptionDetails": {
+    "examplePrescription": "Dextrose 7.5% solution, Make 1000 mL for parenteral nutrition base",
+    "prescriber": "Dr. Sarah Williams, MD",
+    "indication": "Parenteral nutrition component"
+  },
+  "formulation": {
+    "dosageForm": "solution",
+    "targetStrength": "7.5% w/v",
+    "totalQuantity": {
+      "value": 1000,
+      "unit": "mL"
+    },
+    "ingredients": [
+      {
+        "name": "Dextrose 10% Injection USP",
+        "role": "active",
+        "concentration": "10% w/v",
+        "quantity": {
+          "value": 500,
+          "unit": "mL"
+        },
+        "calculatedByAlligation": true,
+        "lotNumber": "[Lot Number]",
+        "expirationDate": "[Exp Date]"
+      },
+      {
+        "name": "Dextrose 5% Injection USP",
+        "role": "active",
+        "concentration": "5% w/v",
+        "quantity": {
+          "value": 500,
+          "unit": "mL"
+        },
+        "calculatedByAlligation": true,
+        "lotNumber": "[Lot Number]",
+        "expirationDate": "[Exp Date]"
+      }
+    ],
+    "beyondUseDate": "24 hours from preparation when stored at 2-8°C (per USP <797> for low-risk compounding)"
+  },
+  "calculations": {
+    "method": "Alligation",
+    "dosageCalculations": [
+      {
+        "step": "Set up alligation grid",
+        "calculation": "Higher concentration (10%) and Lower concentration (5%) to achieve Desired concentration (7.5%)",
+        "result": "Alligation grid established"
+      },
+      {
+        "step": "Calculate parts of higher strength needed",
+        "calculation": "Desired % - Lower % = 7.5% - 5% = 2.5 parts of 10% solution",
+        "result": "2.5 parts of 10% dextrose"
+      },
+      {
+        "step": "Calculate parts of lower strength needed",
+        "calculation": "Higher % - Desired % = 10% - 7.5% = 2.5 parts of 5% solution",
+        "result": "2.5 parts of 5% dextrose"
+      },
+      {
+        "step": "Calculate total parts",
+        "calculation": "2.5 parts + 2.5 parts = 5 total parts",
+        "result": "5 total parts"
+      },
+      {
+        "step": "Calculate volume of 10% solution",
+        "calculation": "(2.5 parts / 5 total parts) × 1000 mL = 500 mL",
+        "result": "500 mL of Dextrose 10%"
+      },
+      {
+        "step": "Calculate volume of 5% solution",
+        "calculation": "(2.5 parts / 5 total parts) × 1000 mL = 500 mL",
+        "result": "500 mL of Dextrose 5%"
+      },
+      {
+        "step": "Verification",
+        "calculation": "(500 mL × 10%) + (500 mL × 5%) = 50 g + 25 g = 75 g dextrose in 1000 mL = 7.5%",
+        "result": "Calculation verified: 7.5% dextrose achieved"
+      }
+    ],
+    "alligationMethod": {
+      "higherStrength": 10,
+      "lowerStrength": 5,
+      "desiredStrength": 7.5,
+      "parts": {
+        "higherStrengthParts": 2.5,
+        "lowerStrengthParts": 2.5
+      },
+      "diagram": "10% ─── (7.5-5) = 2.5 parts\n     ╲      ╱\n      7.5%\n     ╱      ╲\n5%  ─── (10-7.5) = 2.5 parts"
+    },
+    "verifiedBy": "Pharmacist"
+  },
+  "equipment": [
+    {
+      "name": "Laminar airflow hood (LAF)",
+      "type": "hood",
+      "isoClass": "ISO 5",
+      "cleaned": true,
+      "notes": "For aseptic preparation"
+    },
+    {
+      "name": "Graduated cylinder (sterile)",
+      "type": "graduated-cylinder",
+      "size": "1000 mL",
+      "sterile": true
+    },
+    {
+      "name": "60 mL syringes (sterile)",
+      "type": "syringe",
+      "quantity": 10,
+      "sterile": true
+    },
+    {
+      "name": "Transfer needles (sterile)",
+      "type": "needle",
+      "size": "18G",
+      "quantity": 10,
+      "sterile": true
+    },
+    {
+      "name": "Empty sterile IV bag or bottle",
+      "type": "container",
+      "size": "1000 mL",
+      "sterile": true
+    },
+    {
+      "name": "Alcohol swabs",
+      "type": "disinfectant",
+      "quantity": "As needed"
+    }
+  ],
+  "preparationMethod": {
+    "technique": "aseptic-technique",
+    "environment": {
+      "cleanroomClass": "ISO 5",
+      "laminarFlowHood": true,
+      "notes": "Sterile compounding in ISO 5 environment within ISO 7 buffer room"
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "description": "Perform hand hygiene and don appropriate PPE (gown, gloves, hair cover, mask)",
+        "criticalControlPoint": true,
+        "safety": "Essential for maintaining sterility"
+      },
+      {
+        "stepNumber": 2,
+        "description": "Clean laminar flow hood with 70% isopropyl alcohol",
+        "notes": "Allow to dry completely; hood should be running for at least 30 minutes before use"
+      },
+      {
+        "stepNumber": 3,
+        "description": "Gather all materials and place in hood for staging",
+        "notes": "Remove outer packaging outside hood; bring only immediate containers into hood"
+      },
+      {
+        "stepNumber": 4,
+        "description": "Disinfect all items entering the hood with 70% isopropyl alcohol",
+        "criticalControlPoint": true,
+        "notes": "Include vials, syringes, final container"
+      },
+      {
+        "stepNumber": 5,
+        "description": "Allow all disinfected items to dry completely",
+        "duration": {
+          "value": 30,
+          "unit": "seconds"
+        },
+        "notes": "Do not fan or blow on items"
+      },
+      {
+        "stepNumber": 6,
+        "description": "Using aseptic technique, withdraw 500 mL of Dextrose 10% injection",
+        "criticalControlPoint": true,
+        "notes": "Use multiple syringes if needed (e.g., 8-10 syringes of 50-60 mL each)"
+      },
+      {
+        "stepNumber": 7,
+        "description": "Transfer the 500 mL of Dextrose 10% to the empty sterile container",
+        "criticalControlPoint": true,
+        "notes": "Maintain aseptic technique throughout"
+      },
+      {
+        "stepNumber": 8,
+        "description": "Using aseptic technique, withdraw 500 mL of Dextrose 5% injection",
+        "criticalControlPoint": true,
+        "notes": "Use multiple syringes if needed"
+      },
+      {
+        "stepNumber": 9,
+        "description": "Add the 500 mL of Dextrose 5% to the same container",
+        "criticalControlPoint": true,
+        "notes": "Total volume should now be 1000 mL"
+      },
+      {
+        "stepNumber": 10,
+        "description": "Mix thoroughly by gentle inversion",
+        "notes": "Invert bag/bottle 10-15 times to ensure uniform mixing"
+      },
+      {
+        "stepNumber": 11,
+        "description": "Inspect final product for particulate matter and clarity",
+        "criticalControlPoint": true,
+        "notes": "Solution should be clear and colorless; no visible particles"
+      },
+      {
+        "stepNumber": 12,
+        "description": "Label immediately with appropriate information",
+        "criticalControlPoint": true,
+        "notes": "Include all required labeling per institutional policy and USP <797>"
+      }
+    ]
+  },
+  "qualityControl": {
+    "visualInspection": {
+      "passed": true,
+      "appearance": "Clear, colorless solution",
+      "particulates": "None observed",
+      "homogeneity": "homogeneous",
+      "notes": "Inspected against black and white backgrounds under good lighting"
+    },
+    "volumeVerification": {
+      "targetVolume": 1000,
+      "actualVolume": 1000,
+      "unit": "mL",
+      "acceptable": true
+    },
+    "sterilityConcerns": {
+      "sterileProduct": true,
+      "sterilizationMethod": "aseptic-technique",
+      "environmentalMonitoring": "Required per USP <797>",
+      "notes": "Prepared under ISO 5 conditions using aseptic technique"
+    },
+    "osmolarity": {
+      "calculated": "Approximately 416 mOsm/L",
+      "notes": "Hypertonic solution; verify appropriate for intended use"
+    }
+  },
+  "labeling": {
+    "patientName": "[Patient Name]",
+    "patientLocation": "[Unit/Room]",
+    "contents": "Dextrose 7.5% in Water for Injection, 1000 mL",
+    "dateCompounded": "[Date and Time]",
+    "beyondUseDate": "[Date and Time + 24 hours]",
+    "compoundedBy": "[Pharmacist Name and License #]",
+    "storage": "Refrigerate (2-8°C) until use",
+    "warnings": [
+      "For intravenous use only",
+      "Single use container",
+      "Discard unused portion",
+      "Check for particulate matter before use"
+    ],
+    "auxiliaryLabels": [
+      "FOR IV USE ONLY",
+      "REFRIGERATE",
+      "SINGLE USE - DISCARD UNUSED PORTION"
+    ],
+    "additionalInfo": "Lot numbers of component solutions documented in compounding record"
+  },
+  "safety": {
+    "hazardousSubstances": false,
+    "ppe": [
+      "gloves",
+      "gown",
+      "mask",
+      "hair-cover"
+    ],
+    "specialHandling": "Sterile product - maintain aseptic technique at all times",
+    "allergyConsiderations": "Check for dextrose/glucose hypersensitivity (rare)"
+  },
+  "dispensing": {
+    "dispensedBy": "[Pharmacist]",
+    "dispensedDate": "[Date/Time]",
+    "counselingProvided": true,
+    "counselingNotes": "Discussed with nursing: IV administration, storage requirements, expiration",
+    "container": "Sterile IV bag or bottle"
+  },
+  "counselingPoints": [
+    "For healthcare professional administration only",
+    "Store refrigerated until ready to use",
+    "Allow to warm to room temperature before administration if refrigerated",
+    "Inspect for particulate matter and discoloration before each use",
+    "Discard if particulates observed or container integrity compromised",
+    "Use within 24 hours of preparation",
+    "Single-use container - discard any unused portion"
+  ],
+  "stability": {
+    "beyondUseDate": "24 hours",
+    "storageConditions": "Refrigerated (2-8°C)",
+    "reference": "USP <797> Category 1 (Low-Risk) Compounding",
+    "notes": "Dextrose solutions are generally stable but prepared as sterile product must follow USP <797> beyond-use dating"
+  },
+  "references": [
+    "USP <797>: Pharmaceutical Compounding - Sterile Preparations",
+    "Dering-Anderson AM. Pharmaceutical Calculations: A Conceptual Approach. Chapter 10: Alligation",
+    "Marriott JF. Pharmaceutical Compounding and Dispensing. 2nd ed. Chapter 11: Sterile Preparations",
+    "ASHP Guidelines on Compounding Sterile Preparations"
+  ],
+  "notes": {
+    "alligationApplication": "Alligation is particularly useful when you need to prepare a concentration that falls between two available stock concentrations. This method ensures accurate calculation of the quantities needed from each stock solution.",
+    "alternativeMethod": "Could also calculate using dilution equation (C₁V₁ + C₂V₂ = C₃V₃), but alligation provides a systematic approach that's less prone to error.",
+    "whyThisConcentration": "7.5% dextrose is commonly used in parenteral nutrition formulations as it provides appropriate calories while managing osmolarity.",
+    "clinicalContext": "This preparation demonstrates both alligation calculations and sterile compounding technique, combining two important compounding skills."
+  },
+  "clinicalPearls": [
+    "Always verify calculations using alternative method before compounding",
+    "Dextrose solutions provide 3.4 kcal/g",
+    "1000 mL of 7.5% dextrose provides 75 g × 3.4 kcal/g = 255 kcal",
+    "Hypertonic dextrose solutions should be administered via central line when concentration >10%",
+    "Document lot numbers of all component solutions for traceability"
+  ],
+  "conceptualApproach": {
+    "concept": "Alligation Method",
+    "rationale": "When mixing two different concentrations to achieve a desired intermediate concentration, the alligation method provides a systematic way to calculate the proportions needed. The method is based on the principle that the amount of active ingredient must be conserved.",
+    "clinicalContext": "Essential skill for preparing custom concentrations in hospital pharmacy, particularly for parenteral nutrition, pediatric formulations, and critical care applications where standard concentrations may not meet patient needs."
+  }
+}

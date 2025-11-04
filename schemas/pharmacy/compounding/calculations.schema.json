@@ -1,0 +1,328 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nautilus.example.com/schemas/pharmacy/compounding/calculations.schema.json",
+  "title": "Pharmaceutical Calculations Schema",
+  "description": "Schema for pharmaceutical calculations based on 'Pharmaceutical Calculations: A Conceptual Approach'",
+  "type": "object",
+  "required": ["calculationType", "input", "result"],
+  "properties": {
+    "calculationType": {
+      "type": "string",
+      "enum": [
+        "dosage-calculation",
+        "concentration-calculation",
+        "dilution-calculation",
+        "alligation",
+        "percentage-strength",
+        "ratio-strength",
+        "milliequivalent-calculation",
+        "osmolarity-calculation",
+        "tonicity-adjustment",
+        "powder-volume-calculation",
+        "body-surface-area",
+        "creatinine-clearance",
+        "ideal-body-weight",
+        "flow-rate-calculation",
+        "beyond-use-date-calculation"
+      ]
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "patientWeight": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["kg", "lb", "g"]
+            }
+          }
+        },
+        "patientAge": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["years", "months", "days"]
+            }
+          }
+        },
+        "dose": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            },
+            "frequency": {
+              "type": "string"
+            }
+          }
+        },
+        "concentration": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["mg/mL", "g/L", "percent-w/v", "percent-w/w", "percent-v/v", "ratio", "ppm"]
+            }
+          }
+        },
+        "volume": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["mL", "L", "drops", "teaspoons", "tablespoons"]
+            }
+          }
+        },
+        "stockStrength": {
+          "type": "string",
+          "description": "Strength of available stock solution or preparation"
+        },
+        "desiredStrength": {
+          "type": "string",
+          "description": "Target strength for final preparation"
+        },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "roundedValue": {
+          "type": "number",
+          "description": "Result rounded to appropriate significant figures"
+        }
+      }
+    },
+    "workingSteps": {
+      "type": "array",
+      "description": "Step-by-step calculation process",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stepNumber": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "formula": {
+            "type": "string"
+          },
+          "calculation": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "conceptualApproach": {
+      "type": "object",
+      "description": "Conceptual understanding of the calculation",
+      "properties": {
+        "concept": {
+          "type": "string",
+          "description": "Main pharmaceutical concept applied"
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Reasoning behind the calculation approach"
+        },
+        "clinicalContext": {
+          "type": "string",
+          "description": "Clinical relevance of the calculation"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "doubleChecked": {
+          "type": "boolean"
+        },
+        "verifiedBy": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string",
+          "enum": ["independent-calculation", "calculator", "reference-check", "dimensional-analysis"]
+        },
+        "reasonabilityCheck": {
+          "type": "object",
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "withinExpectedRange": {
+              "type": "boolean"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "conversions": {
+      "type": "array",
+      "description": "Unit conversions performed",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "conversionFactor": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "specialConsiderations": {
+      "type": "object",
+      "properties": {
+        "pediatricDosing": {
+          "type": "boolean"
+        },
+        "geriatricDosing": {
+          "type": "boolean"
+        },
+        "renalAdjustment": {
+          "type": "boolean"
+        },
+        "hepaticAdjustment": {
+          "type": "boolean"
+        },
+        "therapeuticRange": {
+          "type": "object",
+          "properties": {
+            "minimum": {
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "alligationMethod": {
+      "type": "object",
+      "description": "Details for alligation calculations (mixing different strengths)",
+      "properties": {
+        "higherStrength": {
+          "type": "number"
+        },
+        "lowerStrength": {
+          "type": "number"
+        },
+        "desiredStrength": {
+          "type": "number"
+        },
+        "parts": {
+          "type": "object",
+          "properties": {
+            "higherStrengthParts": {
+              "type": "number"
+            },
+            "lowerStrengthParts": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "dilutionRatio": {
+      "type": "object",
+      "description": "Dilution calculation details",
+      "properties": {
+        "C1": {
+          "type": "number",
+          "description": "Initial concentration"
+        },
+        "V1": {
+          "type": "number",
+          "description": "Initial volume"
+        },
+        "C2": {
+          "type": "number",
+          "description": "Final concentration"
+        },
+        "V2": {
+          "type": "number",
+          "description": "Final volume"
+        },
+        "formula": {
+          "type": "string",
+          "default": "C1 × V1 = C2 × V2"
+        }
+      }
+    },
+    "errors": {
+      "type": "object",
+      "description": "Common errors to avoid",
+      "properties": {
+        "unitMismatch": {
+          "type": "boolean"
+        },
+        "decimalPointError": {
+          "type": "boolean"
+        },
+        "roundingError": {
+          "type": "boolean"
+        },
+        "conceptualError": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

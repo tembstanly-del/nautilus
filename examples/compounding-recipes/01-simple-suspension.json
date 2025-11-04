@@ -1,0 +1,239 @@
+{
+  "compoundingId": "COMP-00000001",
+  "recipeTitle": "Amoxicillin 50 mg/mL Oral Suspension",
+  "category": "Oral Suspension",
+  "difficulty": "Moderate",
+  "description": "A pediatric antibiotic suspension prepared from capsules when commercial suspension is unavailable or inappropriate strength is needed",
+  "clinicalUse": "Bacterial infections in pediatric patients requiring customized dosing",
+  "prescriptionDetails": {
+    "examplePrescription": "Amoxicillin 50 mg/mL oral suspension, Make 100 mL, Sig: Take 5 mL twice daily for 10 days",
+    "prescriber": "Dr. Jane Smith, MD",
+    "indication": "Otitis media"
+  },
+  "formulation": {
+    "dosageForm": "suspension",
+    "targetStrength": "50 mg/mL",
+    "totalQuantity": {
+      "value": 100,
+      "unit": "mL"
+    },
+    "ingredients": [
+      {
+        "name": "Amoxicillin",
+        "role": "active",
+        "quantity": {
+          "value": 5000,
+          "unit": "mg"
+        },
+        "source": "500 mg capsules",
+        "quantityNeeded": "10 capsules",
+        "grade": "USP"
+      },
+      {
+        "name": "Ora-Sweet SF (sugar-free)",
+        "role": "vehicle",
+        "quantity": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "purpose": "Sweetening and flavoring vehicle",
+        "grade": "USP"
+      },
+      {
+        "name": "Ora-Plus",
+        "role": "suspending-agent",
+        "quantity": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "purpose": "Suspending vehicle providing viscosity",
+        "grade": "USP"
+      }
+    ],
+    "beyondUseDate": "14 days from preparation when stored under refrigeration (2-8°C)"
+  },
+  "calculations": {
+    "dosageCalculations": [
+      {
+        "step": "Calculate total amount of amoxicillin needed",
+        "calculation": "100 mL × 50 mg/mL = 5000 mg",
+        "result": "5000 mg amoxicillin required"
+      },
+      {
+        "step": "Calculate number of capsules",
+        "calculation": "5000 mg ÷ 500 mg/capsule = 10 capsules",
+        "result": "10 capsules of amoxicillin 500 mg"
+      },
+      {
+        "step": "Vehicle preparation",
+        "calculation": "1:1 mixture of Ora-Plus and Ora-Sweet SF",
+        "result": "50 mL Ora-Plus + 50 mL Ora-Sweet SF = 100 mL total"
+      }
+    ],
+    "verifiedBy": "Pharmacist"
+  },
+  "equipment": [
+    {
+      "name": "Mortar and pestle",
+      "type": "mortar-and-pestle",
+      "size": "Medium (6 inch)",
+      "cleaned": true
+    },
+    {
+      "name": "Graduated cylinder",
+      "type": "graduated-cylinder",
+      "size": "100 mL",
+      "cleaned": true
+    },
+    {
+      "name": "Spatula",
+      "type": "spatula",
+      "material": "Stainless steel",
+      "cleaned": true
+    },
+    {
+      "name": "Amber bottle",
+      "type": "container",
+      "size": "120 mL",
+      "cleaned": true
+    }
+  ],
+  "preparationMethod": {
+    "technique": "levigation",
+    "environment": {
+      "cleanroomClass": "general",
+      "location": "Compounding bench"
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "description": "Count and verify 10 amoxicillin 500 mg capsules",
+        "criticalControlPoint": true,
+        "safety": "Verify correct drug and strength"
+      },
+      {
+        "stepNumber": 2,
+        "description": "Open capsules and empty contents into mortar",
+        "notes": "Discard empty capsule shells appropriately"
+      },
+      {
+        "stepNumber": 3,
+        "description": "Add approximately 10 mL of Ora-Plus to the powder",
+        "notes": "Use small amount for levigation"
+      },
+      {
+        "stepNumber": 4,
+        "description": "Triturate the powder with Ora-Plus to form a smooth paste",
+        "duration": {
+          "value": 2,
+          "unit": "minutes"
+        },
+        "notes": "Ensure no lumps remain; paste should be smooth and uniform"
+      },
+      {
+        "stepNumber": 5,
+        "description": "Add Ora-Plus in portions (about 10-15 mL at a time) while mixing",
+        "notes": "Continue until all Ora-Plus is incorporated (total 50 mL)"
+      },
+      {
+        "stepNumber": 6,
+        "description": "Transfer mixture to graduated cylinder",
+        "notes": "Use spatula to ensure complete transfer"
+      },
+      {
+        "stepNumber": 7,
+        "description": "Rinse mortar and pestle with Ora-Sweet SF and add to cylinder",
+        "notes": "Multiple rinses may be needed to ensure complete transfer"
+      },
+      {
+        "stepNumber": 8,
+        "description": "Add Ora-Sweet SF to bring volume to 100 mL mark",
+        "criticalControlPoint": true,
+        "notes": "Ensure meniscus is at 100 mL mark at eye level"
+      },
+      {
+        "stepNumber": 9,
+        "description": "Mix thoroughly by inverting graduated cylinder multiple times",
+        "notes": "Ensure uniform distribution"
+      },
+      {
+        "stepNumber": 10,
+        "description": "Transfer to amber bottle",
+        "notes": "Use funnel if needed to prevent spillage"
+      }
+    ]
+  },
+  "qualityControl": {
+    "visualInspection": {
+      "appearance": "White to off-white suspension",
+      "homogeneity": "homogeneous",
+      "notes": "Should have uniform appearance when shaken; no large clumps or aggregates"
+    },
+    "weighingVerification": {
+      "notes": "10 capsules verified before opening"
+    },
+    "volumeCheck": {
+      "targetVolume": 100,
+      "unit": "mL",
+      "acceptable": true
+    },
+    "phTesting": {
+      "expected": "pH 5-7",
+      "notes": "pH appropriate for oral suspension"
+    }
+  },
+  "labeling": {
+    "patientName": "[Patient Name]",
+    "prescriptionNumber": "[Rx Number]",
+    "directions": "Take 5 mL by mouth twice daily for 10 days",
+    "dateCompounded": "[Date]",
+    "beyondUseDate": "[Date + 14 days]",
+    "compoundedBy": "[Pharmacist Name]",
+    "storage": "Refrigerate (2-8°C). Do not freeze.",
+    "warnings": [
+      "For oral use only",
+      "Keep out of reach of children",
+      "Complete full course even if feeling better"
+    ],
+    "auxiliaryLabels": [
+      "SHAKE WELL BEFORE USE",
+      "REFRIGERATE",
+      "FINISH ALL THIS MEDICATION"
+    ],
+    "additionalInfo": "Discard unused portion after 14 days"
+  },
+  "safety": {
+    "hazardousSubstances": false,
+    "ppe": [
+      "gloves",
+      "gown"
+    ],
+    "allergyConsiderations": "Contains amoxicillin (penicillin). Verify no penicillin allergy."
+  },
+  "counselingPoints": [
+    "Shake bottle well before each use",
+    "Store in refrigerator; do not freeze",
+    "Use provided oral syringe for accurate measurement",
+    "Complete entire course even if symptoms improve",
+    "May take with or without food",
+    "Contact prescriber if rash, diarrhea, or other adverse effects occur",
+    "Discard any unused medication after 14 days"
+  ],
+  "stability": {
+    "beyondUseDate": "14 days",
+    "storageConditions": "Refrigerated (2-8°C)",
+    "reference": "USP <795> guidelines for water-containing preparations",
+    "notes": "Commercial amoxicillin suspensions typically stable 14 days refrigerated after reconstitution"
+  },
+  "references": [
+    "USP <795>: Pharmaceutical Compounding - Nonsterile Preparations",
+    "Marriott JF. Pharmaceutical Compounding and Dispensing. 2nd ed. Chapter 5: Suspensions",
+    "Trissel LA. Trissel's Stability of Compounded Formulations. 6th ed.",
+    "Allen LV. The Art, Science, and Technology of Pharmaceutical Compounding. 5th ed."
+  ],
+  "notes": {
+    "alternativeVehicles": "Can also use 1:1 mixture of Simple Syrup NF and methylcellulose 1% gel, or commercially available suspension vehicles",
+    "flavoringOptions": "Bubble gum or cherry flavor can be added if desired (0.1-0.2 mL per 100 mL)",
+    "patientPopulation": "Commonly prepared for pediatric patients, but can be used for any patient requiring liquid dosage form"
+  }
+}
