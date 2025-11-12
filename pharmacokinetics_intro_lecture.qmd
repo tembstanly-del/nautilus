@@ -1,0 +1,1305 @@
+---
+title: "Introduction to Pharmacokinetics"
+subtitle: "What the Body Does to the Drug"
+author: "Based on Boomer.org PHAR 7632 Syllabus"
+format:
+  revealjs:
+    theme: serif
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    logo: ""
+    css: custom.css
+    footer: "Introduction to Pharmacokinetics"
+    transition: slide
+    background-transition: fade
+    incremental: false
+---
+
+## Learning Objectives {.smaller}
+
+By the end of this lecture, you will be able to:
+
+::: {.incremental}
+1. Define pharmacokinetics and explain its clinical importance
+2. Describe the four ADME processes
+3. Understand and calculate basic PK parameters (Vd, Cl, t½)
+4. Interpret a concentration-time curve
+5. Distinguish between first-order and zero-order kinetics
+6. Explain the concept of bioavailability
+:::
+
+::: {.notes}
+- Set expectations for what students will learn
+- These are foundational concepts for clinical practice
+- Reference: Boomer.org Chapter 3
+:::
+
+---
+
+# PART 1: Fundamentals
+
+---
+
+## What is Pharmacokinetics? {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Definition:**
+Study of drug movement through the body over time
+
+**Clinical Importance:**
+
+- Dosing regimen design
+- Predicting drug concentrations
+- Individualizing therapy
+- Understanding drug interactions
+:::
+
+::: {.column width="50%"}
+```{mermaid}
+%%| fig-width: 6
+flowchart TD
+    A[Drug Administered] --> B[Absorption]
+    B --> C[Distribution]
+    C --> D[Metabolism]
+    D --> E[Excretion]
+    C --> E
+    style A fill:#e1f5ff
+    style E fill:#ffe1e1
+```
+:::
+:::
+
+::: {.notes}
+- Contrast with pharmacodynamics (what drug does to body)
+- Give example: Why does aspirin work for 4-6 hours?
+- Why do some drugs require loading doses?
+:::
+
+---
+
+## ADME - The Four Fundamental Processes {.smaller}
+
+::: {.columns}
+::: {.column width="60%"}
+| Process | Definition | Key Factors |
+|---------|------------|-------------|
+| **Absorption** | Drug enters bloodstream | Route, formulation, GI pH |
+| **Distribution** | Drug disperses through body | Blood flow, Vd, binding |
+| **Metabolism** | Drug is chemically transformed | Liver function, CYP enzymes |
+| **Excretion** | Drug is removed from body | Renal function, biliary |
+:::
+
+::: {.column width="40%"}
+**Image Reference:**
+
+- [ResearchGate ADME Diagram](https://www.researchgate.net/figure/Schematic-diagram-showing-the-four-pharmacokinetic-processes-absorption-distribution_fig1_334629263)
+- [NCBI ADME Illustration](https://www.ncbi.nlm.nih.gov/books/NBK595006/)
+:::
+:::
+
+::: {.fragment}
+💡 **Interactive:** Which process is fastest for IV vs oral administration?
+:::
+
+::: {.notes}
+- Each process affects drug concentration over time
+- These processes often occur simultaneously
+- IV bypasses absorption
+:::
+
+---
+
+## The Concentration-Time Relationship {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Key Concept:**
+
+- Drug effect relates to concentration at site of action
+- We measure plasma concentration as surrogate
+- Concentration changes over time due to ADME
+
+**Important Parameters:**
+
+- **Cmax:** Peak concentration
+- **Tmax:** Time to peak
+- **AUC:** Area under curve (total exposure)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+library(ggplot2)
+
+# Generate data for oral administration
+time <- seq(0, 24, by = 0.1)
+conc_oral <- 10 * time * exp(-0.3 * time)
+
+# Create data frame
+df <- data.frame(time = time, concentration = conc_oral)
+
+# Plot
+ggplot(df, aes(x = time, y = concentration)) +
+  geom_line(color = "blue", size = 1.2) +
+  geom_vline(xintercept = 1/0.3, linetype = "dashed", color = "red") +
+  annotate("text", x = 4, y = 3.5, label = "Tmax", color = "red") +
+  annotate("text", x = 4, y = 3, label = "Cmax", color = "red") +
+  geom_segment(aes(x = 3.33, y = 0, xend = 3.33, yend = 3.68),
+               linetype = "dashed", color = "red") +
+  labs(title = "Typical Oral Drug Concentration-Time Curve",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+:::
+:::
+
+**Image References:**
+
+- [Plasma Concentration-Time Curves (ScienceDirect)](https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/plasma-concentration-time-curve)
+- [ResearchGate Oral Administration Curve](https://www.researchgate.net/figure/Plasma-level-time-curve-for-a-drug-administered-by-oral-route_fig2_295703806)
+
+---
+
+# PART 2: Compartment Models & IV Bolus
+
+---
+
+## Introduction to Compartment Models {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Compartment:** Theoretical space where drug distributes uniformly
+
+**One-Compartment Model:**
+
+- Simplest case
+- Assumes instantaneous distribution
+- Drug behaves as if in single homogeneous space
+- Mathematical model, not anatomical
+:::
+
+::: {.column width="50%"}
+```{mermaid}
+%%| fig-width: 6
+flowchart LR
+    A[Dose] --> B[Central Compartment<br/>Volume = Vd]
+    B --> C[Elimination<br/>Rate = k × C]
+    style B fill:#fff4e6
+    style C fill:#ffe1e1
+```
+:::
+:::
+
+**Useful for:**
+
+- Drugs with rapid distribution
+- Initial understanding of PK principles
+- Examples: Aminoglycosides
+
+**Resources:**
+
+- [Boomer.org Chapter 4](https://www.boomer.org/c/p4/c04/c04.pdf)
+- [Deranged Physiology - Compartment Models](https://derangedphysiology.com/main/cicm-primary-exam/pharmacokinetics/Chapter-201/single-and-multiple-compartment-models-drug-distribution)
+
+---
+
+## IV Bolus - Simplest Administration {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**IV Bolus:**
+
+- Entire dose given instantly into bloodstream
+- Absorption = 100% (bypasses absorption)
+- Allows focus on distribution and elimination
+
+**First-Order Elimination Equation:**
+
+$$C(t) = C_0 \cdot e^{-k \cdot t}$$
+
+Where:
+
+- $C(t)$ = concentration at time t
+- $C_0$ = initial concentration
+- $k$ = elimination rate constant
+- $t$ = time
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+# Generate data for IV bolus
+time <- seq(0, 24, by = 0.1)
+C0 <- 100
+k <- 0.139
+conc_iv <- C0 * exp(-k * time)
+
+df <- data.frame(time = time, concentration = conc_iv)
+
+ggplot(df, aes(x = time, y = concentration)) +
+  geom_line(color = "darkblue", size = 1.2) +
+  geom_hline(yintercept = C0/2, linetype = "dashed", color = "red", alpha = 0.5) +
+  geom_hline(yintercept = C0/4, linetype = "dashed", color = "red", alpha = 0.5) +
+  annotate("text", x = 20, y = 55, label = "50% (1 t½)", color = "red") +
+  annotate("text", x = 20, y = 28, label = "25% (2 t½)", color = "red") +
+  labs(title = "IV Bolus: Exponential Decay (First-Order)",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+:::
+:::
+
+::: {.notes}
+- This exponential equation describes first-order elimination
+- Most drugs follow first-order kinetics
+:::
+
+---
+
+## KEY PARAMETER 1: Volume of Distribution (Vd) {.smaller}
+
+**Definition:** Theoretical volume needed to account for all drug in the body at the same concentration as plasma
+
+$$V_d = \frac{Dose}{C_0}$$
+
+::: {.columns}
+::: {.column width="50%"}
+**Clinical Interpretation:**
+
+| Vd Range | Interpretation | Example |
+|----------|----------------|---------|
+| 5-15 L | Confined to plasma | Warfarin (~8 L) |
+| 15-50 L | Extracellular fluid | Many antibiotics |
+| >50 L | Extensive tissue distribution | Digoxin (~500 L) |
+
+💡 **Vd > total body water** means extensive tissue binding
+:::
+
+::: {.column width="50%"}
+```{mermaid}
+%%| fig-width: 6
+graph TD
+    A[Same Dose<br/>100 mg] --> B[Low Vd = 10 L<br/>C₀ = 10 mg/L]
+    A --> C[High Vd = 100 L<br/>C₀ = 1 mg/L]
+    B --> D[Drug in plasma]
+    C --> E[Drug in tissues]
+    style B fill:#ffcccc
+    style C fill:#ccffcc
+```
+:::
+:::
+
+::: {.fragment}
+**Practice:** If 1000 mg gives C₀ = 20 mg/L, what is Vd?
+
+::: {.fragment}
+**Answer:** Vd = 1000 mg ÷ 20 mg/L = **50 L**
+:::
+:::
+
+---
+
+## KEY PARAMETER 2: Clearance (Cl) {.smaller}
+
+**Definition:** Volume of plasma completely cleared of drug per unit time
+
+::: {.columns}
+::: {.column width="50%"}
+**Formulas:**
+
+$$Cl = k \cdot V_d$$
+
+$$Cl = \frac{Dose}{AUC}$$
+
+**Units:** mL/min or L/h
+
+**Components:**
+
+$$Cl_{total} = Cl_{hepatic} + Cl_{renal} + Cl_{other}$$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+library(ggplot2)
+
+# Clearance concept
+organs <- c("Liver", "Kidneys", "Other")
+clearance <- c(40, 55, 5)
+
+df <- data.frame(organs = factor(organs, levels = organs),
+                 clearance = clearance)
+
+ggplot(df, aes(x = organs, y = clearance, fill = organs)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("#8B4513", "#DC143C", "#4682B4")) +
+  labs(title = "Typical Drug Clearance Distribution",
+       x = "Eliminating Organ",
+       y = "Clearance (mL/min)") +
+  theme_minimal() +
+  theme(text = element_text(size = 14), legend.position = "none")
+```
+:::
+:::
+
+**Clinical Significance:**
+
+- Affected by **liver function** (hepatic Cl) and **kidney function** (renal Cl)
+- Determines **maintenance dose**
+- Renal impairment reduces Cl → need dose adjustment
+
+---
+
+## KEY PARAMETER 3: Half-Life (t½) {.smaller}
+
+**Definition:** Time required for plasma concentration to decrease by 50%
+
+::: {.columns}
+::: {.column width="50%"}
+**Formulas:**
+
+$$t_{1/2} = \frac{0.693}{k}$$
+
+$$t_{1/2} = \frac{0.693 \cdot V_d}{Cl}$$
+
+**Clinical Significance:**
+
+- Determines **dosing interval**
+- Time to steady-state ≈ **5 × t½**
+- Time to eliminate ≈ **5 × t½**
+:::
+
+::: {.column width="50%"}
+| Time | Fraction Remaining | % Remaining |
+|------|-------------------|-------------|
+| 1 t½ | 1/2 | 50% |
+| 2 t½ | 1/4 | 25% |
+| 3 t½ | 1/8 | 12.5% |
+| 4 t½ | 1/16 | 6.25% |
+| 5 t½ | 1/32 | 3.1% |
+:::
+:::
+
+::: {.fragment}
+**Practice:** If C₀ = 100 mg/L and t½ = 4 hours:
+
+- C at 4h? ::: {.fragment}**50 mg/L**:::
+- C at 8h? ::: {.fragment}**25 mg/L**:::
+- C at 12h? ::: {.fragment}**12.5 mg/L**:::
+:::
+
+::: {.notes}
+- After 5 half-lives, ~97% of drug is eliminated
+- Reference: Boomer.org Chapter 5
+:::
+
+---
+
+## Relating Vd, Cl, k, and t½ {.smaller}
+
+**The Four Parameters are Interconnected:**
+
+```{mermaid}
+%%| fig-width: 8
+graph TD
+    A[Vd<br/>Volume of Distribution] -.-> C[k<br/>Elimination Rate Constant]
+    B[Cl<br/>Clearance] -.-> C
+    C -.-> D[t½<br/>Half-Life]
+    A -.-> D
+    B -.-> D
+
+    E["k = Cl / Vd"] -.-> C
+    F["t½ = 0.693 / k"] -.-> D
+    G["t½ = (0.693 × Vd) / Cl"] -.-> D
+
+    style A fill:#ffe6e6
+    style B fill:#e6f3ff
+    style C fill:#fff4e6
+    style D fill:#e6ffe6
+```
+
+::: {.callout-tip}
+## Key Relationships
+- **k** depends on both Cl and Vd: $k = Cl / V_d$
+- **t½** depends on both Cl and Vd: $t_{1/2} = \frac{0.693 \cdot V_d}{Cl}$
+- If Cl normal but t½ long → **Vd must be large**
+- If Vd normal but t½ short → **Cl must be high**
+:::
+
+---
+
+## First-Order vs Zero-Order Kinetics {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**First-Order (Most Common):**
+
+- Constant **fraction** eliminated per unit time
+- Exponential decay
+- t½ is **constant**
+- Rate = k × C
+
+**Examples:** Most drugs at therapeutic doses
+
+**Zero-Order (Rare):**
+
+- Constant **amount** eliminated per unit time
+- Linear decay
+- t½ **changes** with concentration
+- Rate = constant
+
+**Examples:** Ethanol, phenytoin, aspirin (high doses)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+time <- seq(0, 10, by = 0.1)
+
+# First-order
+first_order <- 100 * exp(-0.3 * time)
+
+# Zero-order
+zero_order <- pmax(100 - 10 * time, 0)
+
+df <- data.frame(
+  time = rep(time, 2),
+  concentration = c(first_order, zero_order),
+  kinetics = rep(c("First-Order (Exponential)",
+                   "Zero-Order (Linear)"), each = length(time))
+)
+
+ggplot(df, aes(x = time, y = concentration,
+               color = kinetics, linetype = kinetics)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c("blue", "red")) +
+  labs(title = "First-Order vs Zero-Order Kinetics",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)",
+       color = "Kinetics Type",
+       linetype = "Kinetics Type") +
+  theme_minimal() +
+  theme(text = element_text(size = 12),
+        legend.position = "bottom")
+```
+:::
+:::
+
+**Resources:**
+
+- [NCBI: First and Zero Order Kinetics](https://www.ncbi.nlm.nih.gov/books/NBK499866/)
+- [Deranged Physiology Comparison](https://derangedphysiology.com/main/cicm-primary-exam/pharmacokinetics/Chapter-337/first-order-zero-order-and-non-linear-elimination-kinetics)
+
+---
+
+# PART 3: IV Infusion & Steady State
+
+---
+
+## Continuous IV Infusion {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Concept:**
+
+- Drug administered at constant rate (R₀)
+- Builds up to steady-state
+- **Input rate = Elimination rate** at steady state
+
+**Formula:**
+
+$$C_{ss} = \frac{R_0}{Cl}$$
+
+**Time to Steady-State:**
+
+- 50% of Css at 1 × t½
+- 75% of Css at 2 × t½
+- 87.5% of Css at 3 × t½
+- **97% of Css at 5 × t½**
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+time <- seq(0, 50, by = 0.5)
+t_half <- 10
+k <- 0.693 / t_half
+Css <- 15
+
+# Concentration during infusion
+conc <- Css * (1 - exp(-k * time))
+
+df <- data.frame(time = time, concentration = conc)
+
+ggplot(df, aes(x = time, y = concentration)) +
+  geom_line(color = "darkgreen", size = 1.2) +
+  geom_hline(yintercept = Css, linetype = "dashed",
+             color = "red", size = 1) +
+  geom_hline(yintercept = Css * 0.5, linetype = "dotted",
+             color = "blue", alpha = 0.5) +
+  annotate("text", x = 45, y = Css + 0.5,
+           label = "Steady-State", color = "red") +
+  annotate("segment", x = t_half, xend = t_half,
+           y = 0, yend = Css * 0.5,
+           linetype = "dashed", color = "blue", alpha = 0.5) +
+  annotate("text", x = t_half, y = -1,
+           label = "1 t½", color = "blue") +
+  annotate("segment", x = 5*t_half, xend = 5*t_half,
+           y = 0, yend = Css * 0.97,
+           linetype = "dashed", color = "orange", alpha = 0.5) +
+  annotate("text", x = 5*t_half, y = -1,
+           label = "5 t½", color = "orange") +
+  labs(title = "IV Infusion: Rise to Steady-State",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+:::
+:::
+
+**Used for:** Drugs needing constant levels (dopamine, heparin, propofol)
+
+**Image Reference:** [ResearchGate IV Infusion Curve](https://www.researchgate.net/figure/Plasma-concentration-time-curve-after-IV-Infusion_fig7_295703806)
+
+---
+
+## Loading Dose Concept {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Problem:** Takes 5 × t½ to reach steady-state. What if we need therapeutic levels **immediately**?
+
+**Solution:** Loading Dose
+
+$$Loading\ Dose = V_d \times C_{target}$$
+
+**Example:**
+
+- Drug with t½ = 24 hours
+- Would take **5 days** to steady-state!
+- Loading dose achieves therapeutic level immediately
+- Maintenance dose maintains it
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+time <- seq(0, 120, by = 1)
+t_half <- 24
+k <- 0.693 / t_half
+Css <- 12
+
+# Without loading dose
+no_load <- Css * (1 - exp(-k * time))
+
+# With loading dose
+with_load <- ifelse(time == 0, Css,
+                    Css * (1 - exp(-k * (time - 1))) +
+                    Css * exp(-k * (time - 1)))
+with_load[1] <- Css
+
+df <- data.frame(
+  time = rep(time, 2),
+  concentration = c(no_load, with_load),
+  group = rep(c("Without Loading Dose", "With Loading Dose"),
+              each = length(time))
+)
+
+ggplot(df, aes(x = time, y = concentration,
+               color = group, linetype = group)) +
+  geom_line(size = 1.2) +
+  geom_hline(yintercept = Css * 0.9, linetype = "dashed",
+             color = "gray", alpha = 0.5) +
+  scale_color_manual(values = c("red", "darkgreen")) +
+  labs(title = "Loading Dose: Immediate Therapeutic Level",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)",
+       color = "",
+       linetype = "") +
+  theme_minimal() +
+  theme(text = element_text(size = 12),
+        legend.position = "bottom")
+```
+:::
+:::
+
+::: {.callout-warning}
+**Risk:** Toxicity if Vd estimated incorrectly!
+:::
+
+**Common uses:** Digoxin, phenytoin, some antibiotics
+
+---
+
+# PART 4: Oral Administration & Bioavailability
+
+---
+
+## Oral Administration - A Different Story {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Differences from IV:**
+
+- Must be **absorbed** (absorption phase)
+- Cmax < C₀ for same dose
+- Tmax - time to reach peak
+- **First-pass metabolism** reduces amount reaching circulation
+
+**ADME for Oral Drugs:**
+
+- ✅ **A**bsorption - CRITICAL
+- ✅ **D**istribution - same as IV
+- ✅ **M**etabolism - BEFORE systemic circulation (first-pass)
+- ✅ **E**xcretion - same as IV
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+time <- seq(0, 24, by = 0.1)
+
+# IV bolus
+C0_iv <- 10
+k <- 0.2
+conc_iv <- C0_iv * exp(-k * time)
+
+# Oral (same dose but F = 0.5)
+ka <- 0.6  # absorption rate
+conc_oral <- C0_iv * 0.5 * (ka/(ka-k)) *
+             (exp(-k*time) - exp(-ka*time))
+
+df <- data.frame(
+  time = rep(time, 2),
+  concentration = c(conc_iv, conc_oral),
+  route = rep(c("IV Bolus", "Oral"), each = length(time))
+)
+
+ggplot(df, aes(x = time, y = concentration,
+               color = route, linetype = route)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c("blue", "red")) +
+  annotate("text", x = 3, y = 4, label = "Cmax", color = "red") +
+  annotate("text", x = 0.5, y = 9, label = "C₀", color = "blue") +
+  labs(title = "IV vs Oral: Same Dose, Different Curves",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)",
+       color = "Route",
+       linetype = "Route") +
+  theme_minimal() +
+  theme(text = element_text(size = 14),
+        legend.position = "bottom")
+```
+:::
+:::
+
+::: {.notes}
+- Oral is most convenient route
+- But more complex pharmacokinetics
+- Reference: Boomer.org Chapters 7-8
+:::
+
+---
+
+## Bioavailability (F) {.smaller}
+
+**Definition:** Fraction of administered dose that reaches systemic circulation unchanged
+
+$$F = \frac{AUC_{oral} \times Dose_{IV}}{AUC_{IV} \times Dose_{oral}}$$
+
+::: {.columns}
+::: {.column width="50%"}
+**Range:** 0 to 1 (or 0% to 100%)
+
+**Factors Affecting F:**
+
+- First-pass hepatic metabolism ⚠️
+- Incomplete absorption
+- Drug degradation in GI tract
+- Efflux transporters (P-glycoprotein)
+
+**Clinical Examples:**
+
+| Drug | Oral F | Reason |
+|------|--------|--------|
+| IV drugs | 100% | Direct to circulation |
+| Morphine | ~25% | Extensive first-pass |
+| Nitroglycerin | <1% | Almost complete first-pass |
+| Amoxicillin | ~80% | Good absorption |
+:::
+
+::: {.column width="50%"}
+```{mermaid}
+%%| fig-width: 6
+flowchart TD
+    A[Oral Dose<br/>100%] --> B[GI Tract]
+    B --> C{Absorption}
+    C -->|80%| D[Portal Vein]
+    C -->|20% Lost| E[Not Absorbed]
+    D --> F{Liver<br/>First-Pass}
+    F -->|50%| G[Systemic Circulation<br/>F = 40%]
+    F -->|50% Lost| H[Metabolized]
+
+    style A fill:#e1f5ff
+    style G fill:#e1ffe1
+    style E fill:#ffe1e1
+    style H fill:#ffe1e1
+```
+:::
+:::
+
+**Dose Adjustment:**
+
+$$Dose_{oral} = \frac{Dose_{IV}}{F}$$
+
+**Resources:**
+
+- [NCBI First-Pass Effect](https://www.ncbi.nlm.nih.gov/books/NBK551679/)
+- [ResearchGate First-Pass Diagram](https://www.researchgate.net/figure/The-concept-of-first-pass-metabolism-and-bioavailability-modified-from-Rowland-Tozer_fig3_33935609)
+
+---
+
+## Bioequivalence {.smaller}
+
+**Definition:** Two formulations are bioequivalent if they deliver same amount of drug to circulation at same rate
+
+::: {.columns}
+::: {.column width="50%"}
+**Criteria:**
+
+- Same **AUC** (extent of absorption)
+- Same **Cmax** and **Tmax** (rate of absorption)
+
+**Clinical Importance:**
+
+- Generic vs brand-name drugs
+- Changing formulations
+- Ensuring therapeutic equivalence
+
+**FDA Requirements:**
+
+- 90% confidence interval
+- 80-125% ratio for AUC and Cmax
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+library(ggplot2)
+
+time <- seq(0, 24, by = 0.1)
+ka <- 0.5
+k <- 0.2
+
+# Brand drug
+conc_brand <- 10 * (ka/(ka-k)) * (exp(-k*time) - exp(-ka*time))
+
+# Generic (bioequivalent - slightly different curve but same AUC)
+ka2 <- 0.55
+conc_generic <- 10 * (ka2/(ka2-k)) * (exp(-k*time) - exp(-ka2*time))
+
+df <- data.frame(
+  time = rep(time, 2),
+  concentration = c(conc_brand, conc_generic),
+  formulation = rep(c("Brand", "Generic (Bioequivalent)"),
+                    each = length(time))
+)
+
+ggplot(df, aes(x = time, y = concentration,
+               color = formulation, linetype = formulation)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c("blue", "red")) +
+  labs(title = "Bioequivalent Formulations",
+       subtitle = "Similar AUC, Cmax, and Tmax",
+       x = "Time (hours)",
+       y = "Concentration (mg/L)",
+       color = "",
+       linetype = "") +
+  theme_minimal() +
+  theme(text = element_text(size = 12),
+        legend.position = "bottom")
+```
+:::
+:::
+
+---
+
+# PART 5: Clinical Applications
+
+---
+
+## Clinical Case: Gentamicin Dosing {.smaller}
+
+::: {.panel-tabset}
+
+### Case Presentation
+
+**Patient:** 70 kg adult with pneumonia
+
+**Drug:** Gentamicin (antibiotic)
+
+**Parameters:**
+
+- Vd = 0.25 L/kg
+- t½ = 2.3 hours
+- Target Css = 5 mg/L
+
+**Questions:**
+
+1. What infusion rate for steady-state?
+2. What loading dose if needed?
+3. Time to steady-state without loading dose?
+
+### Calculations
+
+**Step 1: Calculate total Vd**
+$$V_d = 0.25\ L/kg \times 70\ kg = 17.5\ L$$
+
+**Step 2: Calculate clearance**
+$$k = \frac{0.693}{2.3\ h} = 0.301\ h^{-1}$$
+$$Cl = k \times V_d = 0.301 \times 17.5 = 5.27\ L/h$$
+
+**Step 3: Infusion rate**
+$$R_0 = C_{ss} \times Cl = 5\ mg/L \times 5.27\ L/h = 26.4\ mg/h$$
+
+### Results
+
+**Answers:**
+
+1. **Infusion rate:** 26.4 mg/h (≈ 26-27 mg/h)
+
+2. **Loading dose:**
+   $$LD = V_d \times C_{target} = 17.5\ L \times 5\ mg/L = 87.5\ mg$$
+
+3. **Time to steady-state:**
+   $$5 \times t_{1/2} = 5 \times 2.3\ h = 11.5\ hours$$
+
+::: {.callout-tip}
+Loading dose saves ~11.5 hours!
+:::
+
+:::
+
+---
+
+## Special Populations {.smaller}
+
+::: {.panel-tabset}
+
+### Renal Impairment
+
+**Changes:**
+
+- ↓ **Clearance** (for renally eliminated drugs)
+- ↑ **Half-life**
+- Need **dose reduction**
+
+**Dose Adjustment:**
+
+$$Dose_{new} = Dose_{normal} \times \frac{CrCl_{patient}}{CrCl_{normal}}$$
+
+**Examples:**
+
+- Aminoglycosides (gentamicin, tobramycin)
+- Vancomycin
+- Many beta-lactams
+- Gabapentin
+
+### Hepatic Impairment
+
+**Changes:**
+
+- ↓ **Metabolism**
+- ↓ **Clearance**
+- ↑ **Half-life**
+
+**Approach:**
+
+- No simple formula (use Child-Pugh score)
+- Generally reduce dose by 25-50%
+- Monitor closely
+
+**Examples:**
+
+- Warfarin
+- Most benzodiazepines
+- Opioids
+- Propranolol
+
+### Elderly
+
+**Changes with Aging:**
+
+- ↓ Renal function (even with normal SCr)
+- ↓ Lean body mass
+- ↑ Body fat percentage
+- ↓ Hepatic blood flow
+- ↓ Albumin (affects protein binding)
+
+**Approach:**
+
+- **"Start low, go slow"**
+- Use lower end of dosing range
+- Monitor for adverse effects
+- Calculate CrCl (don't rely on SCr alone)
+
+### Obesity
+
+**Dosing Weight Considerations:**
+
+| Drug Type | Weight to Use |
+|-----------|---------------|
+| Hydrophilic (small Vd) | Ideal Body Weight (IBW) |
+| Lipophilic (large Vd) | Total Body Weight (TBW) |
+| Compromise | Adjusted Body Weight (ABW) |
+
+**Formulas:**
+
+$$IBW_{male} = 50\ kg + 2.3\ kg\ per\ inch\ over\ 5\ feet$$
+$$IBW_{female} = 45.5\ kg + 2.3\ kg\ per\ inch\ over\ 5\ feet$$
+$$ABW = IBW + 0.4 \times (TBW - IBW)$$
+
+:::
+
+---
+
+# Summary & Key Concepts
+
+---
+
+## Key Concepts Summary {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**What We Covered:**
+
+✅ Pharmacokinetics = what body does to drug
+
+✅ ADME processes
+
+✅ Three critical parameters:
+
+- **Vd** - Volume of distribution
+- **Cl** - Clearance
+- **t½** - Half-life
+
+✅ First-order kinetics (exponential decay)
+
+✅ IV infusion and steady-state
+
+✅ Bioavailability for oral drugs
+:::
+
+::: {.column width="50%"}
+**The Foundation:**
+
+These basic principles underlie ALL pharmacokinetic calculations and clinical applications
+
+```{mermaid}
+%%| fig-width: 6
+graph TD
+    A[PK Fundamentals] --> B[Dosing Calculations]
+    A --> C[TDM]
+    A --> D[Drug Interactions]
+    A --> E[Special Populations]
+    B --> F[Optimal Patient Care]
+    C --> F
+    D --> F
+    E --> F
+    style A fill:#ffe6e6
+    style F fill:#e6ffe6
+```
+:::
+:::
+
+---
+
+## Essential Formulas - Quick Reference {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Basic Parameters:**
+
+$$V_d = \frac{Dose}{C_0}$$
+
+$$Cl = k \times V_d = \frac{Dose}{AUC}$$
+
+$$k = \frac{Cl}{V_d} = \frac{0.693}{t_{1/2}}$$
+
+$$t_{1/2} = \frac{0.693}{k} = \frac{0.693 \times V_d}{Cl}$$
+:::
+
+::: {.column width="50%"}
+**Clinical Applications:**
+
+$$C(t) = C_0 \times e^{-k \times t}$$
+
+$$C_{ss} = \frac{R_0}{Cl}$$
+
+$$Loading\ Dose = V_d \times C_{target}$$
+
+$$F = \frac{AUC_{oral} \times Dose_{IV}}{AUC_{IV} \times Dose_{oral}}$$
+:::
+:::
+
+::: {.callout-note}
+## Remember
+- Always include **units** in calculations
+- **5 half-lives** rule for steady-state and elimination
+- **Clearance** determines maintenance dose
+- **Vd** determines loading dose
+:::
+
+---
+
+## What's Next? Advanced Topics {.smaller}
+
+**Build on this foundation:**
+
+::: {.incremental}
+1. **Multiple compartment models** (2-compartment, 3-compartment)
+2. **Multiple dosing and accumulation** (dosing intervals, fluctuation)
+3. **Non-linear kinetics** (Michaelis-Menten, saturable elimination)
+4. **Therapeutic drug monitoring** (peak/trough, target levels)
+5. **Population pharmacokinetics** (variability, covariates)
+6. **Pharmacokinetic/pharmacodynamic modeling** (linking PK to effects)
+:::
+
+---
+
+## Practice Problems {.smaller}
+
+::: {.panel-tabset}
+
+### Problem 1
+
+**Question:**
+
+A 1000 mg IV bolus dose yields C₀ = 25 mg/L. The half-life is 6 hours.
+
+Calculate:
+
+a) Vd
+b) k
+c) Concentration at 12 hours
+
+### Solution 1
+
+**a) Calculate Vd:**
+$$V_d = \frac{Dose}{C_0} = \frac{1000\ mg}{25\ mg/L} = 40\ L$$
+
+**b) Calculate k:**
+$$k = \frac{0.693}{t_{1/2}} = \frac{0.693}{6\ h} = 0.116\ h^{-1}$$
+
+**c) Concentration at 12 hours:**
+
+12 hours = 2 half-lives
+
+$$C_{12h} = C_0 \times (0.5)^2 = 25 \times 0.25 = 6.25\ mg/L$$
+
+Or using exponential:
+$$C_{12h} = 25 \times e^{-0.116 \times 12} = 6.25\ mg/L$$
+
+### Problem 2
+
+**Question:**
+
+A drug has Cl = 50 mL/min. What infusion rate achieves Css = 10 mg/L?
+
+### Solution 2
+
+**Convert units:**
+$$Cl = 50\ mL/min \times 60\ min/h \div 1000\ mL/L = 3\ L/h$$
+
+**Calculate infusion rate:**
+$$R_0 = C_{ss} \times Cl = 10\ mg/L \times 3\ L/h = 30\ mg/h$$
+
+**Answer:** 30 mg/h
+
+### Problem 3
+
+**Question:**
+
+If a drug has F = 0.5 and you need 200 mg to reach circulation, what oral dose should be given?
+
+### Solution 3
+
+**Formula:**
+$$Dose_{oral} = \frac{Amount\ needed}{F}$$
+
+**Calculation:**
+$$Dose_{oral} = \frac{200\ mg}{0.5} = 400\ mg$$
+
+**Answer:** 400 mg oral dose
+
+**Verification:**
+$$400\ mg \times 0.5 = 200\ mg\ reaches\ circulation\ \checkmark$$
+
+:::
+
+---
+
+## Resources & Further Learning {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Boomer.org Chapters:**
+
+📖 [Chapter 3: PK Fundamentals](https://www.boomer.org/c/p4/c03/c03.htm) - START HERE
+
+📖 [Chapter 4: One-Compartment IV Bolus](https://www.boomer.org/c/p4/c04/c04.htm)
+
+📖 [Chapter 5: Derived Parameters](https://www.boomer.org/c/p4/c05/c05.htm)
+
+📖 [Chapter 6: IV Infusion](https://www.boomer.org/c/p4/c06/c06.htm)
+
+📖 [Chapters 7-8: Oral Administration](https://www.boomer.org/c/p4/)
+
+📖 [Full Syllabus](https://www.boomer.org/c/p4/syllabus.html)
+:::
+
+::: {.column width="50%"}
+**Additional Resources:**
+
+🔗 Interactive calculators on Boomer.org
+
+🔗 [NCBI Pharmacokinetics](https://www.ncbi.nlm.nih.gov/books/NBK595006/)
+
+🔗 [StatPearls: Drug Bioavailability](https://www.ncbi.nlm.nih.gov/books/NBK557852/)
+
+🔗 [Deranged Physiology](https://derangedphysiology.com/)
+
+**Reference Texts:**
+
+📚 Rowland & Tozer: "Clinical PK & PD"
+
+📚 Winter: "Basic Clinical PK"
+
+📚 Shargel & Yu: "Applied Biopharm & PK"
+:::
+:::
+
+---
+
+## Questions? {.center}
+
+::: {.r-fit-text}
+Thank you!
+:::
+
+::: {.callout-tip icon=false}
+## Contact & Feedback
+- Office hours: [Time and location]
+- Email: [Your email]
+- Course website: [URL]
+:::
+
+::: {.fragment}
+**Remember:** Pharmacokinetics is the foundation for rational drug therapy. Understanding these principles will make you a better clinician!
+:::
+
+---
+
+## Bonus: Clinical Pearls {.smaller visibility="uncounted"}
+
+::: {.callout-warning}
+## Narrow Therapeutic Index Drugs
+Small difference between therapeutic and toxic levels - monitor carefully!
+
+- Warfarin
+- Digoxin
+- Lithium
+- Phenytoin
+- Theophylline
+- Aminoglycosides
+:::
+
+::: {.callout-important}
+## Red Flags
+
+⚠️ **Saturable kinetics:** Phenytoin, aspirin, ethanol - can switch to zero-order
+
+⚠️ **Highly protein bound:** Warfarin (99%), phenytoin (90%) - drug interactions affect free drug
+
+⚠️ **Renally eliminated:** Adjust in renal impairment
+
+⚠️ **Hepatically eliminated:** Adjust in liver disease
+:::
+
+---
+
+## Appendix: Useful Conversions {.smaller visibility="uncounted"}
+
+::: {.columns}
+::: {.column width="50%"}
+**Mathematical Constants:**
+
+- ln(2) = 0.693
+- e = 2.718
+
+**Time:**
+
+- 1 hour = 60 minutes
+- 1 day = 24 hours = 1440 minutes
+
+**Volume:**
+
+- 1 L = 1000 mL
+- 1 dL = 100 mL = 0.1 L
+:::
+
+::: {.column width="50%"}
+**Concentration:**
+
+- 1 mg/L = 1 mcg/mL = 1 μg/mL
+- 1 g/dL = 10 g/L = 10,000 mg/L
+
+**Body Water (70 kg adult):**
+
+- Total body water: ~42 L (60%)
+- Extracellular fluid: ~14 L (20%)
+- Plasma volume: ~3 L (4%)
+- Blood volume: ~5 L (7%)
+:::
+:::
