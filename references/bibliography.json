@@ -1,0 +1,306 @@
+{
+  "bibliography": {
+    "primary_references": [
+      {
+        "id": "marriott-compounding",
+        "type": "book",
+        "title": "Pharmaceutical Compounding and Dispensing",
+        "author": "John F. Marriott",
+        "edition": "2nd Edition",
+        "publisher": "Pharmaceutical Press",
+        "year": 2010,
+        "isbn": "978-0-85369-898-9",
+        "description": "Comprehensive guide to pharmaceutical compounding and dispensing, covering principles, techniques, and practical applications",
+        "topics": [
+          "Pharmaceutical compounding principles",
+          "Dosage form preparation",
+          "Quality assurance in compounding",
+          "Dispensing practices",
+          "Patient counseling",
+          "Legal and regulatory aspects"
+        ],
+        "chapters": [
+          {
+            "number": 1,
+            "title": "Introduction to Compounding and Dispensing",
+            "summary": "Overview of pharmaceutical compounding, its importance, and role in modern pharmacy practice"
+          },
+          {
+            "number": 2,
+            "title": "Calculations in Pharmacy Practice",
+            "summary": "Essential pharmaceutical calculations for compounding and dispensing"
+          },
+          {
+            "number": 3,
+            "title": "Pharmaceutical Forms and Routes of Administration",
+            "summary": "Different dosage forms and delivery routes"
+          },
+          {
+            "number": 4,
+            "title": "Solutions",
+            "summary": "Theory and practice of preparing pharmaceutical solutions"
+          },
+          {
+            "number": 5,
+            "title": "Suspensions",
+            "summary": "Preparation and stabilization of suspension dosage forms"
+          },
+          {
+            "number": 6,
+            "title": "Emulsions",
+            "summary": "Principles and techniques for emulsion preparation"
+          },
+          {
+            "number": 7,
+            "title": "Semi-solid Preparations",
+            "summary": "Ointments, creams, gels, and pastes"
+          },
+          {
+            "number": 8,
+            "title": "Powders and Granules",
+            "summary": "Solid dosage form preparation techniques"
+          },
+          {
+            "number": 9,
+            "title": "Capsules",
+            "summary": "Capsule filling and preparation methods"
+          },
+          {
+            "number": 10,
+            "title": "Suppositories",
+            "summary": "Rectal and vaginal suppository preparation"
+          },
+          {
+            "number": 11,
+            "title": "Sterile Preparations",
+            "summary": "Aseptic technique and sterile compounding"
+          },
+          {
+            "number": 12,
+            "title": "Dispensing Practice",
+            "summary": "Professional aspects of dispensing medications"
+          }
+        ],
+        "relevance": "Primary textbook for pharmaceutical compounding curriculum, covers both theoretical principles and practical techniques essential for pharmacy practice"
+      },
+      {
+        "id": "CalculationsConceptual",
+        "type": "book",
+        "title": "Pharmaceutical Calculations: A Conceptual Approach",
+        "author": "Alison Dering-Anderson",
+        "edition": "1st Edition",
+        "publisher": "Springer Publishing Company",
+        "year": 2015,
+        "isbn": "978-0-8261-9597-9",
+        "description": "A unique approach to pharmaceutical calculations emphasizing conceptual understanding rather than memorization of formulas",
+        "topics": [
+          "Dimensional analysis",
+          "Dosage calculations",
+          "Concentration and dilution",
+          "Percentage strength",
+          "Ratio strength",
+          "Alligation",
+          "Compounding calculations",
+          "Clinical applications"
+        ],
+        "key_concepts": [
+          {
+            "concept": "Dimensional Analysis",
+            "description": "Using unit factors and conversion factors to solve pharmaceutical problems logically"
+          },
+          {
+            "concept": "Conceptual Understanding",
+            "description": "Focus on understanding why calculations work rather than memorizing formulas"
+          },
+          {
+            "concept": "Clinical Context",
+            "description": "Applying calculations in real-world clinical scenarios"
+          },
+          {
+            "concept": "Error Prevention",
+            "description": "Strategies to avoid common calculation errors and verify answers"
+          },
+          {
+            "concept": "Reasonableness Checks",
+            "description": "Evaluating whether calculated answers make clinical sense"
+          }
+        ],
+        "relevance": "Secondary reference focusing on calculation methods and problem-solving approaches essential for accurate compounding"
+      }
+    ],
+    "supplementary_references": [
+      {
+        "id": "usp-795",
+        "type": "standard",
+        "title": "USP Chapter <795>: Pharmaceutical Compounding - Nonsterile Preparations",
+        "organization": "United States Pharmacopeial Convention",
+        "year": 2023,
+        "url": "https://www.usp.org",
+        "description": "Official standards for nonsterile pharmaceutical compounding in the United States",
+        "topics": [
+          "Compounding facility requirements",
+          "Personnel training and competency",
+          "Quality control procedures",
+          "Beyond-use dating",
+          "Documentation requirements",
+          "Ingredient selection and testing"
+        ],
+        "relevance": "Essential regulatory reference for compounding standards and practices"
+      },
+      {
+        "id": "usp-797",
+        "type": "standard",
+        "title": "USP Chapter <797>: Pharmaceutical Compounding - Sterile Preparations",
+        "organization": "United States Pharmacopeial Convention",
+        "year": 2023,
+        "url": "https://www.usp.org",
+        "description": "Official standards for sterile pharmaceutical compounding in the United States",
+        "topics": [
+          "Aseptic technique",
+          "Cleanroom requirements",
+          "Risk levels and categories",
+          "Environmental monitoring",
+          "Personnel training",
+          "Quality assurance"
+        ],
+        "relevance": "Critical reference for sterile compounding procedures and requirements"
+      },
+      {
+        "id": "usp-800",
+        "type": "standard",
+        "title": "USP Chapter <800>: Hazardous Drugs - Handling in Healthcare Settings",
+        "organization": "United States Pharmacopeial Convention",
+        "year": 2023,
+        "url": "https://www.usp.org",
+        "description": "Standards for safe handling of hazardous drugs",
+        "topics": [
+          "Hazardous drug list",
+          "Containment strategies",
+          "Personal protective equipment",
+          "Environmental controls",
+          "Spill management",
+          "Waste disposal"
+        ],
+        "relevance": "Required reference for safety protocols when compounding hazardous medications"
+      },
+      {
+        "id": "remington",
+        "type": "book",
+        "title": "Remington: The Science and Practice of Pharmacy",
+        "edition": "23rd Edition",
+        "publisher": "Pharmaceutical Press",
+        "year": 2020,
+        "isbn": "978-0-12-820007-0",
+        "description": "Comprehensive pharmacy reference covering pharmaceutical sciences and practice",
+        "relevance": "Authoritative reference for in-depth pharmaceutical knowledge"
+      },
+      {
+        "id": "allen-compounding",
+        "type": "book",
+        "title": "The Art, Science, and Technology of Pharmaceutical Compounding",
+        "author": "Loyd V. Allen Jr.",
+        "edition": "5th Edition",
+        "publisher": "American Pharmacists Association",
+        "year": 2016,
+        "isbn": "978-1-58212-208-4",
+        "description": "Practical guide to pharmaceutical compounding techniques and formulations",
+        "relevance": "Practical reference with formulation recipes and detailed procedures"
+      },
+      {
+        "id": "trissel",
+        "type": "book",
+        "title": "Trissel's Stability of Compounded Formulations",
+        "author": "Lawrence A. Trissel",
+        "edition": "6th Edition",
+        "publisher": "American Pharmacists Association",
+        "year": 2018,
+        "isbn": "978-1-58212-270-1",
+        "description": "Comprehensive resource on stability of compounded preparations",
+        "relevance": "Essential reference for determining beyond-use dates and stability"
+      }
+    ],
+    "regulatory_resources": [
+      {
+        "id": "fda-compounding",
+        "type": "guidance",
+        "title": "FDA Guidance on Compounding",
+        "organization": "U.S. Food and Drug Administration",
+        "url": "https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding",
+        "description": "FDA guidance documents and regulations for pharmaceutical compounding",
+        "relevance": "Federal regulatory requirements for compounding practice"
+      },
+      {
+        "id": "nabp",
+        "type": "organization",
+        "title": "National Association of Boards of Pharmacy (NABP)",
+        "url": "https://nabp.pharmacy",
+        "description": "Organization supporting state boards of pharmacy with model regulations and standards",
+        "relevance": "Source for model compounding regulations and state board contacts"
+      }
+    ],
+    "professional_organizations": [
+      {
+        "id": "pcca",
+        "name": "Professional Compounding Centers of America",
+        "type": "organization",
+        "url": "https://www.pccarx.com",
+        "description": "Professional organization supporting compounding pharmacists",
+        "resources": [
+          "Formulation databases",
+          "Continuing education",
+          "Technical support",
+          "Quality ingredients"
+        ]
+      },
+      {
+        "id": "iacp",
+        "name": "International Academy of Compounding Pharmacists",
+        "type": "organization",
+        "url": "https://www.iacprx.org",
+        "description": "Professional advocacy and education organization for compounding pharmacists",
+        "resources": [
+          "Advocacy",
+          "Education programs",
+          "Networking",
+          "Practice resources"
+        ]
+      },
+      {
+        "id": "ashp",
+        "name": "American Society of Health-System Pharmacists",
+        "type": "organization",
+        "url": "https://www.ashp.org",
+        "description": "Professional society for health-system pharmacists",
+        "resources": [
+          "Practice standards",
+          "Educational programs",
+          "Sterile compounding resources",
+          "Quality improvement tools"
+        ]
+      }
+    ],
+    "journals": [
+      {
+        "id": "ijpc",
+        "title": "International Journal of Pharmaceutical Compounding",
+        "publisher": "PCCA",
+        "issn": "1092-4221",
+        "description": "Peer-reviewed journal focused on pharmaceutical compounding",
+        "url": "https://www.ijpc.com"
+      },
+      {
+        "id": "ajhp",
+        "title": "American Journal of Health-System Pharmacy",
+        "publisher": "ASHP",
+        "issn": "1079-2082",
+        "description": "Professional journal covering all aspects of pharmacy practice including compounding"
+      }
+    ],
+    "citation_format": {
+      "style": "APA 7th Edition",
+      "note": "All references formatted according to American Psychological Association (APA) 7th edition guidelines"
+    },
+    "last_updated": "2025-11-04",
+    "compiled_by": "Nautilus Pharmacy Education Project"
+  }
+}

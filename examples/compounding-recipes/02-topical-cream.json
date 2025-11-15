@@ -1,0 +1,268 @@
+{
+  "compoundingId": "COMP-00000002",
+  "recipeTitle": "Hydrocortisone 2.5% Cream",
+  "category": "Topical Semi-solid",
+  "difficulty": "Simple",
+  "description": "A topical corticosteroid cream prepared by incorporating hydrocortisone powder into a cream base",
+  "clinicalUse": "Treatment of inflammatory and pruritic dermatoses",
+  "prescriptionDetails": {
+    "examplePrescription": "Hydrocortisone 2.5% Cream, Make 30 g, Sig: Apply thin layer to affected area twice daily",
+    "prescriber": "Dr. Robert Johnson, MD",
+    "indication": "Eczema"
+  },
+  "formulation": {
+    "dosageForm": "cream",
+    "targetStrength": "2.5% w/w",
+    "totalQuantity": {
+      "value": 30,
+      "unit": "g"
+    },
+    "ingredients": [
+      {
+        "name": "Hydrocortisone powder",
+        "role": "active",
+        "quantity": {
+          "value": 0.75,
+          "unit": "g"
+        },
+        "calculationShown": "30 g × 2.5% = 30 g × 0.025 = 0.75 g",
+        "grade": "USP"
+      },
+      {
+        "name": "Dermabase or Aquaphor Natural Healing Ointment",
+        "role": "base",
+        "quantity": {
+          "value": 29.25,
+          "unit": "g"
+        },
+        "calculationShown": "30 g total - 0.75 g active = 29.25 g base",
+        "purpose": "Emollient cream base"
+      }
+    ],
+    "beyondUseDate": "30 days from preparation when stored at room temperature (20-25°C)"
+  },
+  "calculations": {
+    "dosageCalculations": [
+      {
+        "step": "Calculate amount of hydrocortisone needed",
+        "calculation": "30 g × (2.5 g hydrocortisone / 100 g cream) = 0.75 g hydrocortisone",
+        "result": "0.75 g hydrocortisone powder"
+      },
+      {
+        "step": "Calculate amount of base needed",
+        "calculation": "30 g total - 0.75 g hydrocortisone = 29.25 g base",
+        "result": "29.25 g cream base"
+      },
+      {
+        "step": "Verification",
+        "calculation": "0.75 g + 29.25 g = 30 g total",
+        "result": "Total weight confirmed: 30 g"
+      }
+    ],
+    "verifiedBy": "Pharmacist"
+  },
+  "equipment": [
+    {
+      "name": "Electronic balance",
+      "type": "balance",
+      "sensitivity": "0.01 g",
+      "calibrationDate": "Current",
+      "cleaned": true
+    },
+    {
+      "name": "Ointment slab",
+      "type": "ointment-slab",
+      "material": "Glass or plastic-coated paper",
+      "cleaned": true
+    },
+    {
+      "name": "Spatula",
+      "type": "spatula",
+      "material": "Stainless steel",
+      "size": "Medium",
+      "cleaned": true
+    },
+    {
+      "name": "Weighing boat or paper",
+      "type": "weighing-vessel",
+      "cleaned": true
+    },
+    {
+      "name": "Ointment jar",
+      "type": "container",
+      "size": "30 g or 1 oz",
+      "cleaned": true
+    }
+  ],
+  "preparationMethod": {
+    "technique": "geometric-dilution",
+    "environment": {
+      "cleanroomClass": "general",
+      "location": "Compounding bench"
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "description": "Calibrate and tare the electronic balance",
+        "criticalControlPoint": true,
+        "notes": "Ensure balance reads 0.00 g"
+      },
+      {
+        "stepNumber": 2,
+        "description": "Weigh 0.75 g of hydrocortisone powder",
+        "criticalControlPoint": true,
+        "notes": "Use weighing boat; record actual weight if different"
+      },
+      {
+        "stepNumber": 3,
+        "description": "Transfer hydrocortisone powder to ointment slab",
+        "notes": "Use spatula for complete transfer"
+      },
+      {
+        "stepNumber": 4,
+        "description": "Weigh approximately 29.25 g of cream base",
+        "criticalControlPoint": true,
+        "notes": "Total final weight should be 30 g"
+      },
+      {
+        "stepNumber": 5,
+        "description": "Using geometric dilution: Add equal amount of base (0.75 g) to the powder",
+        "notes": "This is the first dilution step (1:1 ratio)"
+      },
+      {
+        "stepNumber": 6,
+        "description": "Mix thoroughly using spatula with levigation technique",
+        "duration": {
+          "value": 1,
+          "unit": "minutes"
+        },
+        "notes": "Use firm pressure to ensure uniform mixing; no powder particles should be visible"
+      },
+      {
+        "stepNumber": 7,
+        "description": "Add an amount of base equal to the mixture (approximately 1.5 g)",
+        "notes": "Second geometric dilution (doubles the mixture)"
+      },
+      {
+        "stepNumber": 8,
+        "description": "Mix thoroughly again",
+        "duration": {
+          "value": 1,
+          "unit": "minutes"
+        },
+        "notes": "Continue levigation until uniform"
+      },
+      {
+        "stepNumber": 9,
+        "description": "Continue adding base in portions equal to the current mixture amount",
+        "notes": "Repeat geometric dilution until all base is incorporated"
+      },
+      {
+        "stepNumber": 10,
+        "description": "Final mixing",
+        "duration": {
+          "value": 2,
+          "unit": "minutes"
+        },
+        "notes": "Ensure completely uniform appearance and smooth texture"
+      },
+      {
+        "stepNumber": 11,
+        "description": "Verify weight of final product",
+        "criticalControlPoint": true,
+        "notes": "Should be approximately 30 g (allow ±0.1 g for loss during transfer)"
+      },
+      {
+        "stepNumber": 12,
+        "description": "Transfer to ointment jar using spatula",
+        "notes": "Pack tightly to avoid air pockets"
+      }
+    ]
+  },
+  "qualityControl": {
+    "visualInspection": {
+      "appearance": "Smooth, white to off-white cream",
+      "homogeneity": "homogeneous",
+      "texture": "Smooth, easily spreadable",
+      "notes": "No visible particles, lumps, or grittiness; uniform color throughout"
+    },
+    "weighingVerification": {
+      "targetWeight": 30,
+      "acceptableRange": "29.9 - 30.1 g",
+      "notes": "Final weight verified and within acceptable range"
+    },
+    "uniformity": {
+      "method": "Visual inspection of small sample on spatula",
+      "result": "Uniform distribution of active ingredient confirmed",
+      "notes": "No white particles visible indicating undispersed drug"
+    }
+  },
+  "labeling": {
+    "patientName": "[Patient Name]",
+    "prescriptionNumber": "[Rx Number]",
+    "directions": "Apply thin layer to affected area twice daily",
+    "dateCompounded": "[Date]",
+    "beyondUseDate": "[Date + 30 days]",
+    "compoundedBy": "[Pharmacist Name]",
+    "storage": "Store at room temperature (20-25°C). Avoid excessive heat.",
+    "warnings": [
+      "For external use only",
+      "Avoid contact with eyes",
+      "Keep out of reach of children",
+      "Do not use on broken skin unless directed"
+    ],
+    "auxiliaryLabels": [
+      "FOR EXTERNAL USE ONLY",
+      "AVOID CONTACT WITH EYES",
+      "DO NOT USE IF PREGNANT OR NURSING WITHOUT CONSULTING DOCTOR"
+    ]
+  },
+  "safety": {
+    "hazardousSubstances": false,
+    "ppe": [
+      "gloves",
+      "gown"
+    ],
+    "specialHandling": "Corticosteroid - avoid skin contact; use gloves",
+    "allergyConsiderations": "Check for corticosteroid allergy or hypersensitivity"
+  },
+  "counselingPoints": [
+    "Apply a thin layer to affected area only",
+    "Wash hands before and after application (unless treating hands)",
+    "Avoid contact with eyes, nose, and mouth",
+    "Do not cover with occlusive dressing unless directed by prescriber",
+    "Do not use on face, groin, or underarms unless specifically directed",
+    "May cause skin thinning with prolonged use",
+    "Contact prescriber if condition worsens or does not improve in 2 weeks",
+    "Do not use for longer than prescribed"
+  ],
+  "stability": {
+    "beyondUseDate": "30 days",
+    "storageConditions": "Room temperature (20-25°C), avoid excessive heat and freezing",
+    "reference": "USP <795> for nonsterile, water-containing preparations in semi-solid base",
+    "notes": "Hydrocortisone is relatively stable in cream bases at room temperature"
+  },
+  "references": [
+    "USP <795>: Pharmaceutical Compounding - Nonsterile Preparations",
+    "Marriott JF. Pharmaceutical Compounding and Dispensing. 2nd ed. Chapter 7: Semi-solid Preparations",
+    "Allen LV. Standard Operating Procedures for Ointments/Creams/Gels",
+    "Trissel LA. Trissel's Stability of Compounded Formulations. 6th ed."
+  ],
+  "notes": {
+    "geometricDilution": "Geometric dilution is essential for uniformly distributing small amounts of potent drug throughout a large amount of base. Always start with equal parts of drug and base, then double the mixture size with each addition.",
+    "alternativeBases": [
+      "Aquaphor Natural Healing Ointment",
+      "Dermabase",
+      "Vanicream",
+      "White petrolatum USP (for ointment rather than cream)"
+    ],
+    "higherStrengths": "For higher strengths (e.g., 5%), may use pre-made hydrocortisone 1% cream and calculate using alligation or dilution with additional active powder",
+    "commercialAvailability": "Hydrocortisone is available commercially in 0.5%, 1%, and 2.5% strengths. Compounding may be needed for custom strengths or alternative bases."
+  },
+  "clinicalPearls": [
+    "Low-potency corticosteroid appropriate for mild-moderate inflammation",
+    "Generally safe for short-term use on large body areas",
+    "May be used in pediatric patients under supervision",
+    "Inform patients about proper topical corticosteroid use to prevent complications"
+  ]
+}
